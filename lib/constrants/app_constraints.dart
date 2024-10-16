@@ -26,5 +26,45 @@ class AppConstraints{
       "imagePath" : "assets/image/mens.jpg"
     } ,
 
+
+
+
+
+
+  ] ;
+
+  static List<Map<String , dynamic>> cartItem  = [
+    {
+      "title": "Woman Sweter",
+      "imagePath": "assets/image/women sweter.png",
+      "price":" 70.00",
+    } ,
+
+    {
+      "title": "Smart Watch",
+      "imagePath": "assets/image/smart watch.png",
+      "price":" 55.00",
+    } ,
+
+    {
+      "title": "Wireless Headphone",
+      "imagePath": "assets/image/headphone.webp",
+      "price": "120.00",
+    } ,
+
+    {
+      "title": "Wireless Headphone",
+      "imagePath": "assets/image/headphone.webp",
+      "price": "120.00",
+    } ,
+
+
+
+
+
+
+
+
+
   ] ;
 }

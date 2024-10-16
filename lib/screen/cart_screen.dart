@@ -146,7 +146,7 @@ class _CartScreenState extends State<CartScreen> {
                     ],
                   ),
                   const SizedBox(
-                    height: 35,
+                    height: 10,
                   ),
 
                   SizedBox(
