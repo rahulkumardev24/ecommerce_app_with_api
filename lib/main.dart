@@ -1,3 +1,4 @@
+import 'package:ecommerce_app_api/screen/auth/login_screen.dart';
 import 'package:ecommerce_app_api/screen/cart_screen.dart';
 import 'package:ecommerce_app_api/screen/dashboard_screen.dart';
 import 'package:ecommerce_app_api/screen/home_screen.dart';
@@ -22,7 +23,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: DashBordScreen()
+      home: LoginScreen()
     );
   }
 }
