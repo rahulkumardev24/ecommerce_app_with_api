@@ -17,8 +17,8 @@ class MyIconButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 50,
-      height: 50,
+      width: 40,
+      height: 40,
       decoration: BoxDecoration(
         color: buttonBgColor, // Use the customizable color
         borderRadius: BorderRadius.circular(100), // Circular shape
@@ -28,5 +28,6 @@ class MyIconButton extends StatelessWidget {
         icon: Image.asset(iconPath), // Display the icon
       ),
     );
+
   }
 }
