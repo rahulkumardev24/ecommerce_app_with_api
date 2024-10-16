@@ -1,5 +1,6 @@
 import 'package:ecommerce_app_api/app_widgets/icon_button.dart';
 import 'package:ecommerce_app_api/app_widgets/my_text_button.dart';
+import 'package:ecommerce_app_api/screen/dashboard_screen.dart';
 import 'package:ecommerce_app_api/utils/custom_text_style.dart';
 import 'package:flutter/material.dart';
 
@@ -22,7 +23,9 @@ class _ItemDetailsScreenState extends State<ItemDetailsScreen> {
           padding: const EdgeInsets.all(8.0),
           child: MyIconButton(
             iconPath: "assets/icon/left.png",
-            onPressed: () {},
+            onPressed: () {
+              Navigator.pushReplacement(context,MaterialPageRoute(builder: (context)=> const DashBordScreen()));
+            },
             buttonBgColor: Colors.white,
           ),
         ),
@@ -88,16 +91,16 @@ class _ItemDetailsScreenState extends State<ItemDetailsScreen> {
                             Row(
                               children: [
                                 Container(
-                                  width: 60,
+                                  width: 50,
                                   decoration: BoxDecoration(
                                       borderRadius: BorderRadius.circular(20),
                                       color: AppColors.primaryColor),
                                   child: Row(
-                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                                     children: [
                                       const Icon(
                                         Icons.star,
-                                        color: Colors.white,
+                                        color: Colors.white,size: 15,
                                       ),
                                       Text(
                                         "4.8",
@@ -139,19 +142,34 @@ class _ItemDetailsScreenState extends State<ItemDetailsScreen> {
                             scrollDirection: Axis.horizontal,
                             itemBuilder: (context, index) {
                               return Container(
-                                margin: const EdgeInsets.symmetric(
-                                    horizontal: 5), // Spacing between circles
+                                margin: const EdgeInsets.symmetric(horizontal: 8),
                                 height: 40,
                                 width: 40,
                                 decoration: BoxDecoration(
                                   color: AppColors.colorList[index],
-                                  shape: BoxShape
-                                      .circle, // Use circle shape for perfect circles
+                                  shape: BoxShape.circle,
+                                  boxShadow: [
+                                    BoxShadow(
+                                      color: AppColors.colorList[index],
+                                      spreadRadius: 2,
+                                      blurRadius: 2,
+                                    ),
+                                  ],
+                                ),
+                                child: Container(
+                                  height: 30,
+                                  width: 30,
+                                  decoration: BoxDecoration(
+                                    color: AppColors.colorList[index], // Color of the inner circle
+                                    border: Border.all(width: 2, color: Colors.white), // Border for the inner circle
+                                    shape: BoxShape.circle,
+                                  ),
                                 ),
                               );
                             },
                           ),
                         ),
+
                         const SizedBox(
                           height: 20,
                         ),
@@ -180,7 +198,7 @@ class _ItemDetailsScreenState extends State<ItemDetailsScreen> {
             ],
           ),
 
-          /// Black Box at the Bottom
+          /// ------------------------ Black Box at the Bottom -------------------///
           Positioned(
             bottom: 0,
             left: 0,

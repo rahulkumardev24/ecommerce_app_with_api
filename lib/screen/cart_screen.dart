@@ -2,6 +2,8 @@ import 'package:ecommerce_app_api/app_widgets/cart_card.dart';
 import 'package:ecommerce_app_api/app_widgets/icon_button.dart';
 import 'package:ecommerce_app_api/app_widgets/my_text_button.dart';
 import 'package:ecommerce_app_api/constrants/app_colors.dart';
+import 'package:ecommerce_app_api/screen/dashboard_screen.dart';
+import 'package:ecommerce_app_api/screen/home_screen.dart';
 import 'package:ecommerce_app_api/utils/custom_text_style.dart';
 import 'package:flutter/material.dart';
 
@@ -21,10 +23,15 @@ class _CartScreenState extends State<CartScreen> {
       appBar: AppBar(
         backgroundColor: AppColors.backgroundColor,
         leading: Padding(
-          padding: const EdgeInsets.all(8.0),
+          padding: const EdgeInsets.all(10.0),
           child: MyIconButton(
             iconPath: "assets/icon/left.png",
-            onPressed: () {},
+            onPressed: () {
+              Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => const DashBordScreen()));
+            },
             buttonBgColor: Colors.white,
           ),
         ),
@@ -90,20 +97,35 @@ class _CartScreenState extends State<CartScreen> {
                       color: AppColors.cardColor,
                       borderRadius: BorderRadius.circular(20),
                     ),
-                    child: TextField(
-                      controller: discountController,
-                      decoration: InputDecoration(
-                          hintText: "Enter Discount Code",
-                          border: const OutlineInputBorder(
-                            borderSide: BorderSide.none,
+                    child: Row(
+                      children: [
+                        Expanded(
+                          child: TextField(
+                            controller: discountController,
+                            decoration: InputDecoration(
+                              hintText: "Enter Discount Code",
+                              hintStyle: mTextStyle14(
+                                mColor: Colors.black45,
+                              ),
+                              border: const OutlineInputBorder(
+                                borderSide: BorderSide.none,
+                              ),
+                              contentPadding: const EdgeInsets.symmetric(
+                                  vertical: 10.0, horizontal: 10.0),
+                            ),
                           ),
-                          hintStyle: mTextStyle14(
-                            mColor: Colors.black45,
-                          ),
-                          suffixText: "Apply",
-                          suffixStyle: mTextStyle14(
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(right: 10.0),
+                          child: Text(
+                            "Apply",
+                            style: mTextStyle14(
                               mFontWeight: FontWeight.bold,
-                              mColor: AppColors.primaryColor)),
+                              mColor: AppColors.primaryColor,
+                            ),
+                          ),
+                        ),
+                      ],
                     ),
                   ),
 

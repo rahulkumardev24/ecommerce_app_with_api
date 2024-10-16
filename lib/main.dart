@@ -3,6 +3,8 @@ import 'package:ecommerce_app_api/screen/cart_screen.dart';
 import 'package:ecommerce_app_api/screen/dashboard_screen.dart';
 import 'package:ecommerce_app_api/screen/home_screen.dart';
 import 'package:ecommerce_app_api/screen/item_details_screen.dart';
+import 'package:ecommerce_app_api/screen/splash_screen.dart';
+import 'package:ecommerce_app_api/screen/user_profile_screen.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -23,7 +25,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: LoginScreen()
+      home: SplashScreen()
     );
   }
 }

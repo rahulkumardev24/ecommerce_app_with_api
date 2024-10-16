@@ -1,4 +1,3 @@
-
 import 'package:ecommerce_app_api/app_widgets/my_text_button.dart';
 import 'package:ecommerce_app_api/constrants/app_colors.dart';
 import 'package:flutter/cupertino.dart';
@@ -59,7 +58,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     /// -----------------Heading text ----------------------- ///
                     Text(
                       "Create Your Account",
-                      style: mTextStyle25(mFontWeight: FontWeight.bold , mColor: Colors.white),
+                      style: mTextStyle25(
+                          mFontWeight: FontWeight.bold, mColor: Colors.white),
                     ),
 
                     /// ----------------------Top box---------------------------///
@@ -100,11 +100,10 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                         label: "email",
                                         hintText: "Enter email",
                                         sufficeIcon:
-                                        Icons.account_circle_outlined,
+                                            Icons.account_circle_outlined,
                                         prefixIcon: Icons.email_outlined,
                                       ),
                                     ),
-
 
                                     /// number
                                     Padding(
@@ -139,6 +138,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                         prefixIcon: Icons.lock,
                                       ),
                                     ),
+
                                     /// confirm password
                                     Padding(
                                       padding: const EdgeInsets.all(8.0),
@@ -146,8 +146,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                         controller: passwordConfirmController,
                                         label: "confirm Password",
                                         hintText: "Enter confirm Password",
-                                        sufficeIcon:
-                                        Icons.remove_red_eye,
+                                        sufficeIcon: Icons.remove_red_eye,
                                         prefixIcon: Icons.lock,
                                       ),
                                     ),
@@ -162,13 +161,12 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                   bottom: 10,
                                   right: 10,
                                   child: FloatingActionButton(
-
                                     backgroundColor: AppColors.primaryColor,
                                     foregroundColor: Colors.white,
                                     shape: RoundedRectangleBorder(
                                       borderRadius: BorderRadius.circular(100),
                                     ),
-                                    onPressed: () {  },
+                                    onPressed: () {},
                                     child: const Icon(
                                       Icons.arrow_forward,
                                       size: 30,
@@ -217,14 +215,16 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                   width: mqData!.size.width * 0.7,
                                   height: mqData!.size.height * 0.05,
                                   child: MyTextButton(
-                                      buttonText: "Login",
-                                      onPressed: () {
-                                        Navigator.pushReplacement(
-                                            context,
-                                            MaterialPageRoute(
-                                                builder: (context) =>
-                                                const LoginScreen()));
-                                      }, buttonColor: Colors.black54,),
+                                    buttonText: "Login",
+                                    onPressed: () {
+                                      Navigator.pushReplacement(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (context) =>
+                                                  const LoginScreen()));
+                                    },
+                                    buttonColor: Colors.black54,
+                                  ),
                                 ),
                               ],
                             ),

@@ -6,7 +6,6 @@ import 'package:ecommerce_app_api/constrants/app_constraints.dart';
 import 'package:ecommerce_app_api/screen/item_details_screen.dart';
 import 'package:ecommerce_app_api/utils/custom_text_style.dart';
 import 'package:flutter/material.dart';
-
 import '../constrants/app_colors.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -22,7 +21,7 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      /// -------------AAP BAR ---------------------///
+      /// -------------APP BAR ---------------------///
       appBar: AppBar(
         title: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -39,100 +38,100 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
       ),
 
-      body: Center(
-        child: Column(
-          children: [
-            /// -----------------------SEARCH----------------------///
-            const SizedBox(
-              height: 10,
-            ),
-            SearchBox(searchController: searchController),
-            const SizedBox(
-              height: 20,
-            ),
+      body: SingleChildScrollView(
+        child: Center(
+          child: Column(
+            children: [
+              /// -----------------------SEARCH----------------------///
+              const SizedBox(height: 10),
+              SearchBox(searchController: searchController),
+              const SizedBox(height: 20),
 
-            /// -------------------SLIDER ---------------------------///
-            const BannerSlider(),
+              /// -------------------SLIDER ---------------------------///
+              const BannerSlider(),
 
-            const SizedBox(
-              height: 20,
-            ),
+              const SizedBox(height: 20),
 
-            /// ------------------ Category -----------------------///
-            SizedBox(
-              height: 150,
-              child: ListView.builder(
-                scrollDirection: Axis.horizontal,
-                itemCount: AppConstraints.mCategory.length,
-                itemBuilder: (context, index) {
-                  return Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Column(
-                      children: [
-                        Container(
-                          height: 80,
-                          width: 80,
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(100),
-                              image: DecorationImage(
-                                  image: AssetImage(AppConstraints
-                                      .mCategory[index]["imagePath"]),
-                                  fit: BoxFit.cover)),
-                        ),
-                        Text(
-                          AppConstraints.mCategory[index]["title"],
-                          style: mTextStyle16(),
-                        )
-                      ],
-                    ),
-                  );
-                },
+              /// ------------------ Category -----------------------///
+              SizedBox(
+                height: 150,
+                child: ListView.builder(
+                  scrollDirection: Axis.horizontal,
+                  itemCount: AppConstraints.mCategory.length,
+                  itemBuilder: (context, index) {
+                    return Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Column(
+                        children: [
+                          Container(
+                            height: 80,
+                            width: 80,
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(100),
+                                image: DecorationImage(
+                                    image: AssetImage(AppConstraints
+                                        .mCategory[index]["imagePath"]),
+                                    fit: BoxFit.cover)),
+                          ),
+                          Text(
+                            AppConstraints.mCategory[index]["title"],
+                            style: mTextStyle16(),
+                          )
+                        ],
+                      ),
+                    );
+                  },
+                ),
               ),
-            ),
 
-            /// Special For You
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 14.0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
-                    "Special For You ",
-                    style: mTextStyle25(),
-                  ),
-                  Text(
-                    "see all",
-                    style: mTextStyle16(),
-                  ),
-                ],
+              /// Special For You
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 14.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text("Special For You", style: mTextStyle25()),
+                    Text("see all", style: mTextStyle16()),
+                  ],
+                ),
               ),
-            ),
-            const SizedBox(height: 10,),
-            Expanded(
+              const SizedBox(height: 10),
+
+              /// ---------------------GridView ----------------///
+              SizedBox(
+                height: (AppConstraints.cartItem.length / 2).ceil() * 220,
                 child: Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 12.0),
                   child: GridView.builder(
-                                itemCount: AppConstraints.cartItem.length,
-                                gridDelegate:
-                     SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2 ,
-                        mainAxisSpacing: 14 ,
-                        childAspectRatio: 2/2.2,
-
-                        crossAxisSpacing: 14),
-                                itemBuilder: (context, index) {
-                  return InkWell(
-                    onTap: (){
-                      Navigator.push(context, MaterialPageRoute(builder: (context) => ItemDetailsScreen())) ;
+                    physics: const NeverScrollableScrollPhysics(),
+                    itemCount: AppConstraints.cartItem.length,
+                    gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 2,
+                      mainAxisSpacing: 14,
+                      childAspectRatio: 2 / 2.2,
+                      crossAxisSpacing: 14,
+                    ),
+                    itemBuilder: (context, index) {
+                      return InkWell(
+                        onTap: () {
+                          Navigator.pushReplacement(
+                            context,
+                            MaterialPageRoute(builder: (context) => const ItemDetailsScreen()),
+                          );
+                        },
+                        child: MyItemCard(
+                          imagePath: AppConstraints.cartItem[index]['imagePath'],
+                          title: AppConstraints.cartItem[index]['title'],
+                          price: "\$${AppConstraints.cartItem[index]['price']}",
+                        ),
+                      );
                     },
-                    child: MyItemCard(
-                        imagePath: AppConstraints.cartItem[index]['imagePath'],
-                        title: AppConstraints.cartItem[index]['title'],
-                        price: "\$${AppConstraints.cartItem[index]['price']}"),
-                  );
-                                },
-                              ),
-                ))
-          ],
+                  ),
+                ),
+              ),
+
+            ],
+          ),
         ),
       ),
     );

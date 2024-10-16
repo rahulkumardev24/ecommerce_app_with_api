@@ -1,6 +1,7 @@
 import 'package:ecommerce_app_api/app_widgets/my_text_button.dart';
 import 'package:ecommerce_app_api/constrants/app_colors.dart';
 import 'package:ecommerce_app_api/screen/auth/register_screen.dart';
+import 'package:ecommerce_app_api/screen/dashboard_screen.dart';
 import 'package:ecommerce_app_api/utils/custom_text_style.dart';
 import 'package:flutter/material.dart';
 import '../../app_widgets/custom_text_field.dart';
@@ -104,7 +105,10 @@ class _LoginScreenState extends State<LoginScreen> {
                             foregroundColor: Colors.white,
                             shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(100)),
-                            onPressed: () {},
+                            onPressed: () {
+                              Navigator.pushReplacement(context, MaterialPageRoute(builder: (cntext) => DashBordScreen()));
+
+                            },
                             child: const Icon(
                               Icons.arrow_forward,
                               size: 30,

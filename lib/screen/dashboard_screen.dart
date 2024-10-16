@@ -24,7 +24,7 @@ class _dashBordScreenState extends State<DashBordScreen> {
     const FavoritesScreen() ,
     const HomeScreen() ,
     const CartScreen() ,
-    const UserProfileScreen()
+     UserProfileScreen()
 
   ];
 
